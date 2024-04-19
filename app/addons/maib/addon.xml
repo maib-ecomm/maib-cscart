@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>maib</id>
+    <version>1.0</version>
+    <compatibility>
+        <core_version>
+            <min>4.7.2</min>
+            <max>6.0.0</max>
+        </core_version>
+    </compatibility>
+    <default_language>en</default_language>
+    <php_extensions>
+        <curl>
+            <supported>Y</supported>
+        </curl>
+        <json>
+            <supported>Y</supported>
+        </json>
+    </php_extensions>
+    <priority>100</priority>
+    <status>active</status>
+    <has_icon>Y</has_icon>
+    <supplier>BC Maib SA</supplier>
+    <queries>
+        <item type="file">database/data.sql</item>
+    </queries>
+    <functions>
+        <item for="uninstall">fn_maib_delete_payment_processors</item>
+    </functions>
+</addon>
