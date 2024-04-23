@@ -1,19 +1,19 @@
 INSERT INTO ?:payment_processors (processor, processor_script, processor_template, admin_template, callback, type, addon) VALUES ('MAIB', 'maib.php', 'views/orders/components/payments/cc_outside.tpl', 'maib.tpl', 'N', 'P', 'maib');
 
-CREATE TABLE ?:maib_payments (
-    `id` INT UNSIGNED AUTO_INCREMENT,
-    `transaction_id` VARCHAR(32) NULL UNIQUE,
-    `amount` DECIMAL(10,2),
-    `currency_code` INT UNSIGNED NOT NULL,
-    `status` VARCHAR(20) NOT NULL,
-    `user_id` INT UNSIGNED NOT NULL DEFAULT 0,
-    `params` TEXT NULL,
-    `ip` VARCHAR(128) NULL,
-    `company_id` INT UNSIGNED NOT NULL DEFAULT 0,
-    `created_at` INT UNSIGNED NOT NULL DEFAULT 0,
-    `updated_at` INT UNSIGNED NOT NULL DEFAULT 0,
-    PRIMARY KEY (`id`)
-) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- CREATE TABLE ?:maib_payments (
+--     `id` INT UNSIGNED AUTO_INCREMENT,
+--     `transaction_id` VARCHAR(32) NULL UNIQUE,
+--     `amount` DECIMAL(10,2),
+--     `currency_code` INT UNSIGNED NOT NULL,
+--     `status` VARCHAR(20) NOT NULL,
+--     `user_id` INT UNSIGNED NOT NULL DEFAULT 0,
+--     `params` TEXT NULL,
+--     `ip` VARCHAR(128) NULL,
+--     `company_id` INT UNSIGNED NOT NULL DEFAULT 0,
+--     `created_at` INT UNSIGNED NOT NULL DEFAULT 0,
+--     `updated_at` INT UNSIGNED NOT NULL DEFAULT 0,
+--     PRIMARY KEY (`id`)
+-- ) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO ?:language_values (lang_code, name, value) VALUES
     ('en', 'maib.addon_is_disabled', 'Addon is disabled'),
@@ -94,4 +94,16 @@ INSERT INTO ?:language_values (lang_code, name, value) VALUES
 
     ('en', 'maib.refunded_status_id_description', 'For payment refund, update the order status to the selected status. The funds will be returned to the customer card.'),
     ('ro', 'maib.refunded_status_id_description', 'Pentru returnarea plății, actualizați starea comenzii la starea selectată. Suma va fi returnatã pe cardul clientului.'),
-    ('ru', 'maib.refunded_status_id_description', 'Для возврата платежа обновите статус заказа на выбранного статуса. Средства будут возвращены на карту клиента.');
+    ('ru', 'maib.refunded_status_id_description', 'Для возврата платежа обновите статус заказа на выбранного статуса. Средства будут возвращены на карту клиента.'),
+    
+    ('en', 'maib.payment_error', 'Payment failed! Please try again. [error]'),
+    ('ro', 'maib.payment_error', 'Plata a eșuat! Vă rugăm să încercați din nou. [error]'),
+    ('ru', 'maib.payment_error', 'Оплата не удалась! Пожалуйста, попробуйте еще раз. [error]'),
+    
+    ('en', 'maib.error_no_payment', 'Error no payment'),
+    ('ro', 'maib.error_no_payment', 'Plata a eșuat! Vă rugăm să încercați din nou.'),
+    ('ru', 'maib.error_no_payment', 'Оплата не удалась! Пожалуйста, попробуйте еще раз.'),
+    
+    ('en', 'maib.error_callback', 'This Callback URL works and should not be called directly!'),
+    ('ro', 'maib.error_callback', 'Acest Callback URL funcționează și nu poate fi accesat direct!'),
+    ('ru', 'maib.error_callback', 'Этот Callback URL работает и не должен вызываться напрямую!');

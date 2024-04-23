@@ -1,6 +1,8 @@
 <?php
 
-defined('BOOTSTRAP') or die('Access denied');
+if (!defined('AREA')) {
+    die('Access denied');
+}
 
 $schema['maib_order'] = [
     'modes' => [
