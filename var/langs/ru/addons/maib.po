@@ -12,6 +12,10 @@ msgstr ""
 "X-Crowdin-File-ID: 8118\n"
 "PO-Revision-Date: 2024-04-01 11:58\n"
 
+msgctxt "Addons::name::maib"
+msgid "maib addon name"
+msgstr "Модуль платежного шлюза Maib"
+
 msgctxt "Addons::description::maib"
 msgid "maib addon description"
-msgstr "Модуль платежного шлюза Maib"
+msgstr "Принимайте Visa / Mastercard / Apple Pay / Google Pay в своем магазине с помощью модуля платежного шлюза Maib"
