@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <addon scheme="3.0">
     <id>maib</id>
-    <name>Maib Payment Gateway Module</name>
     <version>1.0</version>
     <compatibility>
         <core_version>
