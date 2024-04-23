@@ -1,20 +1,5 @@
 INSERT INTO ?:payment_processors (processor, processor_script, processor_template, admin_template, callback, type, addon) VALUES ('MAIB', 'maib.php', 'views/orders/components/payments/cc_outside.tpl', 'maib.tpl', 'N', 'P', 'maib');
 
--- CREATE TABLE ?:maib_payments (
---     `id` INT UNSIGNED AUTO_INCREMENT,
---     `transaction_id` VARCHAR(32) NULL UNIQUE,
---     `amount` DECIMAL(10,2),
---     `currency_code` INT UNSIGNED NOT NULL,
---     `status` VARCHAR(20) NOT NULL,
---     `user_id` INT UNSIGNED NOT NULL DEFAULT 0,
---     `params` TEXT NULL,
---     `ip` VARCHAR(128) NULL,
---     `company_id` INT UNSIGNED NOT NULL DEFAULT 0,
---     `created_at` INT UNSIGNED NOT NULL DEFAULT 0,
---     `updated_at` INT UNSIGNED NOT NULL DEFAULT 0,
---     PRIMARY KEY (`id`)
--- ) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 INSERT INTO ?:language_values (lang_code, name, value) VALUES
     ('en', 'maib.addon_is_disabled', 'Addon is disabled'),
     ('ro', 'maib.addon_is_disabled', 'Modulul nu este activ'),
