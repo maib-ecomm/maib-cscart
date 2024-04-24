@@ -16,7 +16,6 @@ if (defined('PAYMENT_NOTIFICATION')) {
     $order_id = !empty($_REQUEST['order_id']) ? (int) $_REQUEST['order_id'] : 0;
     $pay_id = !empty($_REQUEST['pay_id']) ? (int) $_REQUEST['pay_id'] : 0;
     $order_info = fn_get_order_info($order_id);
-    fn_print_die($order_info);
 
     if ($mode == 'success') {
         if (!empty($pay_id) && !empty($order_id)) {
