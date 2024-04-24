@@ -4,8 +4,7 @@
     <version>1.0</version>
     <compatibility>
         <core_version>
-            <min>4.7.2</min>
-            <max>6.0.0</max>
+            <min>4.1.1</min>
         </core_version>
     </compatibility>
     <default_language>en</default_language>
