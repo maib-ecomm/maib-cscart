@@ -21,7 +21,7 @@ if (defined('PAYMENT_NOTIFICATION')) {
         if (!empty($pay_id) && !empty($order_id)) {
             fn_log_event('requests', 'http', array(
                 'url' => '',
-                'data' => 'Return to Ok URL. Pay ID: ' . $pay_id . ', Order ID: ' . $orderId,
+                'data' => 'Return to Ok URL. Pay ID: ' . $pay_id . ', Order ID: ' . $order_id,
                 'response' => '',
             ));
     
@@ -64,7 +64,7 @@ if (defined('PAYMENT_NOTIFICATION')) {
         if (!empty($pay_id) && !empty($order_id)) {
             fn_log_event('requests', 'http', array(
                 'url' => '',
-                'data' => 'Return to Fail URL. Pay ID: ' . $payId . ', Order ID: ' . $orderId,
+                'data' => 'Return to Fail URL. Pay ID: ' . $pay_id . ', Order ID: ' . $order_id,
                 'response' => '',
             ));
 
