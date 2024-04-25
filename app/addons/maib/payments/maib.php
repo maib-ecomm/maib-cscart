@@ -5,12 +5,9 @@ if (!defined('AREA')) {
 }
 
 use Tygh\Enum\NotificationSeverity;
-use Tygh\Registry;
 use MaibEcomm\MaibSdk\MaibApiRequest;
-use MaibEcomm\MaibSdk\MaibAuthRequest;
 
 require_once 'MaibApiRequest.php';
-require_once 'MaibAuthRequest.php';
 
 if (defined('PAYMENT_NOTIFICATION')) {
     $order_id = !empty($_REQUEST['order_id']) ? (int) $_REQUEST['order_id'] : 0;
