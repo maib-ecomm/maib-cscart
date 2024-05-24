@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>maib</id>
+    <version>1.0</version>
+    <compatibility>
+        <core_version>
+            <min>4.1.1</min>
+        </core_version>
+    </compatibility>
+    <default_language>en</default_language>
+    <php_extensions>
+        <curl>
+            <supported>Y</supported>
+        </curl>
+        <json>
+            <supported>Y</supported>
+        </json>
+    </php_extensions>
+    <priority>100</priority>
+    <status>active</status>
+    <has_icon>Y</has_icon>
+    <supplier>BC Maib SA</supplier>
+    <queries>
+        <item type="file">database/data.sql</item>
+    </queries>
+    <functions>
+        <item for="install">fn_maib_install</item>
+        <item for="uninstall">fn_maib_uninstall</item>
+    </functions>
+</addon>
