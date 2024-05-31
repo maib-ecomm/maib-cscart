@@ -220,7 +220,7 @@ if (defined('PAYMENT_NOTIFICATION')) {
         $product_items[] = [
             "id" => $product['product_id'],
             "name" => $product['product'],
-            "price" => $product['price'],
+            "price" => (float) $product['price'],
             "quantity" => (float) number_format(
                 $product['amount'],
                 1,
@@ -231,7 +231,7 @@ if (defined('PAYMENT_NOTIFICATION')) {
     }
 
     $params = [
-        "amount" => $order_info['total'],
+        "amount" => (float) $order_info['total'],
         "currency" => $order_info['secondary_currency'],
         "clientIp" => $order_info['ip_address'],
         "language" => $order_info['lang_code'],
@@ -240,7 +240,7 @@ if (defined('PAYMENT_NOTIFICATION')) {
         "clientName" => $order_info['firstname'] . ' ' . $order_info['lastname'],
         "email" => $order_info['email'],
         "phone" => substr($order_info['phone'], 0, 40),
-        "delivery" => $order_info['shipping_cost'],
+        "delivery" => (float) $order_info['shipping_cost'],
         "okUrl" => $ok_url,
         "failUrl" => $fail_url,
         "callbackUrl" => $callback_url,
