@@ -96,7 +96,7 @@
         <div class="controls">
             <select name="payment_data[processor_params][pending_status_id]" id="maib_pending_status_id">
                 {foreach from=$order_statuses item="order_status" key="key"}
-                    <option value="{$order_statuses[$key].status}" {if $processor_params.pending_status_id == $order_statuses[$key].status_id}selected{/if}>
+                    <option value="{$order_statuses[$key].status}" {if $processor_params.pending_status_id == $order_statuses[$key].status}selected{/if}>
                         {$order_statuses[$key].description}
                     </option>
                 {/foreach}
@@ -109,7 +109,7 @@
         <div class="controls">
             <select name="payment_data[processor_params][completed_status_id]" id="maib_completed_status_id">
                 {foreach from=$order_statuses item="order_status" key="key"}
-                    <option value="{$order_statuses[$key].status}" {if $processor_params.completed_status_id == $order_statuses[$key].status_id}selected{/if}>
+                    <option value="{$order_statuses[$key].status}" {if $processor_params.completed_status_id == $order_statuses[$key].status}selected{/if}>
                         {$order_statuses[$key].description}
                     </option>
                 {/foreach}
@@ -122,7 +122,7 @@
         <div class="controls">
             <select name="payment_data[processor_params][failed_status_id]" id="maib_failed_status_id">
                 {foreach from=$order_statuses item="order_status" key="key"}
-                    <option value="{$order_statuses[$key].status}" {if $processor_params.failed_status_id == $order_statuses[$key].status_id}selected{/if}>
+                    <option value="{$order_statuses[$key].status}" {if $processor_params.failed_status_id == $order_statuses[$key].status}selected{/if}>
                         {$order_statuses[$key].description}
                     </option>
                 {/foreach}
@@ -135,7 +135,7 @@
         <div class="controls">
             <select name="payment_data[processor_params][refunded_status_id]" id="maib_refunded_status_id">
                 {foreach from=$order_statuses item="order_status" key="key"}
-                    <option value="{$order_statuses[$key].status}" {if $processor_params.refunded_status_id == $order_statuses[$key].status_id}selected{/if}>
+                    <option value="{$order_statuses[$key].status}" {if $processor_params.refunded_status_id == $order_statuses[$key].status}selected{/if}>
                         {$order_statuses[$key].description}
                     </option>
                 {/foreach}
