@@ -275,6 +275,9 @@ if (defined('PAYMENT_NOTIFICATION')) {
                 'response' => '',
             ));
 
+            $cart = $order_info;
+            fn_update_order($cart, $order_id);
+
             fn_change_order_status(
                 (int) $order_info['order_id'],
                 $processor_data['processor_params']['pending_status_id'],
