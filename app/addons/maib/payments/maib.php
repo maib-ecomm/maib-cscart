@@ -317,9 +317,6 @@ if (defined('PAYMENT_NOTIFICATION')) {
                 'response' => '',
             ));
 
-            fn_clear_cart($cart);
-            fn_save_cart_content($cart, $order_info['user_id']);
-
             header('Location: ' . $response->payUrl);
         }
     } catch (Exception $ex) {
