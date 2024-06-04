@@ -275,8 +275,7 @@ if (defined('PAYMENT_NOTIFICATION')) {
                 'response' => '',
             ));
 
-            $cart = $order_info;
-            fn_update_order($cart, $order_id);
+            fn_update_order($order_info, $order_id);
 
             fn_change_order_status(
                 (int) $order_info['order_id'],
@@ -284,6 +283,12 @@ if (defined('PAYMENT_NOTIFICATION')) {
                 $order_info['status'],
                 fn_get_notification_rules(['notify_user' => true])
             );
+
+            fn_log_event('requests', 'http', array(
+                'url' => '',
+                'data' => 'Redirect to pay url from maib API: ' . json_encode(fn_url($response->payUrl), JSON_PRETTY_PRINT) . ', order_id: ' . $order_id,
+                'response' => '',
+            ));
 
             fn_redirect(fn_url($response->payUrl));
         }
