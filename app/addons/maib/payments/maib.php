@@ -286,11 +286,11 @@ if (defined('PAYMENT_NOTIFICATION')) {
 
             fn_log_event('requests', 'http', array(
                 'url' => '',
-                'data' => 'Redirect to pay url from maib API: ' . json_encode(fn_url($response->payUrl), JSON_PRETTY_PRINT) . ', order_id: ' . $order_id,
+                'data' => 'Redirect to pay url from maib API: ' . json_encode($response->payUrl, JSON_PRETTY_PRINT) . ', order_id: ' . $order_id,
                 'response' => '',
             ));
 
-            fn_redirect(fn_url($response->payUrl));
+            header('Location: ' . $response->payUrl);
         }
     } catch (Exception $ex) {
         fn_set_notification(NotificationSeverity::ERROR, __('error'), __('maib.payment_error', [
