@@ -6,6 +6,7 @@ if (!defined('AREA')) {
 
 use Tygh\Enum\NotificationSeverity;
 use MaibEcomm\MaibSdk\MaibApiRequest;
+use Tygh\Tygh;
 
 require_once 'MaibApiRequest.php';
 
@@ -275,7 +276,10 @@ if (defined('PAYMENT_NOTIFICATION')) {
                 'response' => '',
             ));
 
-            fn_update_order($order_info, $order_id);
+            $cart = &Tygh::$app['session']['cart'];
+            fn_extract_cart_content($cart, $auth['user_id']);
+
+            fn_update_order($cart, $order_id);
 
             fn_change_order_status(
                 (int) $order_info['order_id'],
@@ -289,6 +293,9 @@ if (defined('PAYMENT_NOTIFICATION')) {
                 'data' => 'Redirect to pay url from maib API: ' . json_encode($response->payUrl, JSON_PRETTY_PRINT) . ', order_id: ' . $order_id,
                 'response' => '',
             ));
+
+            fn_clear_cart($cart);
+            fn_save_cart_content($cart, $auth['user_id']);
 
             header('Location: ' . $response->payUrl);
         }
