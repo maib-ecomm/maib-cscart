@@ -121,7 +121,7 @@ if (defined('PAYMENT_NOTIFICATION')) {
         ));
 
         $data_result = $data['result']; // Data from "result" object
-        $sortedDataByKeys = $this->sortByKeyRecursive($data_result); // Sort an array by key recursively
+        $sortedDataByKeys = sortByKeyRecursive($data_result); // Sort an array by key recursively
         $key = $order_info['payment_method']['processor_params']['project_signature']; // Signature Key from Project settings
         $sortedDataByKeys[] = $key; // Add checkout Secret Key to the end of data array
         $signString = implode(":", $sortedDataByKeys); // Implode array recursively
