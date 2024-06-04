@@ -94,7 +94,7 @@ if (defined('PAYMENT_NOTIFICATION')) {
         }
     }
 
-    if ($mode == 'callback') {
+    if ($mode == 'return') {
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
             fn_set_notification(NotificationSeverity::ERROR, __('error'), __('maib.error_callback'));
 
