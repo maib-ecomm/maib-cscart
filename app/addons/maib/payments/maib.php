@@ -122,10 +122,19 @@ if (defined('PAYMENT_NOTIFICATION')) {
 
         $data_result = $data['result']; // Data from "result" object
         $sortedDataByKeys = sortByKeyRecursive($data_result); // Sort an array by key recursively
+        if (!$order_info) {
+            $order_info = fn_get_order_info($data_result['orderId']);
+        }
         $key = $order_info['payment_method']['processor_params']['project_signature']; // Signature Key from Project settings
         $sortedDataByKeys[] = $key; // Add checkout Secret Key to the end of data array
         $signString = implode(":", $sortedDataByKeys); // Implode array recursively
         $sign = base64_encode(hash("sha256", $signString, true)); // Result Hash
+
+        fn_log_event('requests', 'http', array(
+            'url' => '',
+            'data' => 'Order Info: ' . json_encode($order_info, JSON_PRETTY_PRINT),
+            'response' => '',
+        ));
 
         $pay_id = isset($data_result['payId']) ? $data_result['payId'] : false;
         $order_id = isset($data_result['orderId'])
@@ -177,6 +186,16 @@ if (defined('PAYMENT_NOTIFICATION')) {
                 'data' => $order_note,
                 'response' => '',
             ));
+
+            list($carts) = fn_get_carts(array(
+                'user_id' => $order_info['user_id']
+            ));
+            $cart = reset($carts);
+            $cart['products'] = fn_get_cart_products($cart['user_id'], $params);
+            fn_extract_cart_content($cart, $order_info['user_id']);
+
+            fn_clear_cart($cart);
+            fn_save_cart_content($cart, $order_info['user_id']);
 
             fn_change_order_status(
                 (int) $order_info['order_id'],
@@ -276,8 +295,12 @@ if (defined('PAYMENT_NOTIFICATION')) {
                 'response' => '',
             ));
 
-            $cart = &Tygh::$app['session']['cart'];
-            fn_extract_cart_content($cart, $auth['user_id']);
+            list($carts) = fn_get_carts(array(
+                'user_id' => $order_info['user_id']
+            ));
+            $cart = reset($carts);
+            $cart['products'] = fn_get_cart_products($cart['user_id'], $params);
+            fn_extract_cart_content($cart, $order_info['user_id']);
 
             fn_update_order($cart, $order_id);
 
@@ -295,7 +318,7 @@ if (defined('PAYMENT_NOTIFICATION')) {
             ));
 
             fn_clear_cart($cart);
-            fn_save_cart_content($cart, $auth['user_id']);
+            fn_save_cart_content($cart, $order_info['user_id']);
 
             header('Location: ' . $response->payUrl);
         }
