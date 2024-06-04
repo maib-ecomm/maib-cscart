@@ -12,7 +12,7 @@ require_once 'MaibApiRequest.php';
 
 if (defined('PAYMENT_NOTIFICATION')) {
     $order_id = !empty($_REQUEST['orderId']) ? (int) $_REQUEST['orderId'] : 0;
-    $pay_id = !empty($_REQUEST['payId']) ? (int) $_REQUEST['payId'] : 0;
+    $pay_id = !empty($_REQUEST['payId']) ? $_REQUEST['payId'] : 0;
     $order_info = fn_get_order_info($order_id);
 
     if ($mode == 'success') {
